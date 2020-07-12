@@ -30,7 +30,7 @@ accept a predicate which can be constructed using KeyPath extensions.
 The `filter` and `exclude` methods return new QuerySet's including your filter.
 
 ```swift
-queryset.filter(\.name == "Kyle")
+queryset.filter(\.name == "Dan")
 queryset.exclude(\.age > 25)
 ```
 
@@ -38,7 +38,7 @@ You may also use standard `NSPredicate` if you want to construct complicated
 queries or do not wish to use the type-safe properties.
 
 ```swift
-queryset.filter(NSPredicate(format: "name == '%@'", "Kyle"))
+queryset.filter(NSPredicate(format: "name == '%@'", "Dan"))
 queryset.exclude(NSPredicate(format: "age > 25"))
 ```
 
@@ -48,7 +48,7 @@ The result of refining a QuerySet is itself a QuerySet, so it’s possible
 to chain refinements together. For example:
 
 ```swift
-queryset.filter(\.name == "Kyle")
+queryset.filter(\.name == "Dan")
 .exclude(\.age < 25)
 ```
 
@@ -103,13 +103,13 @@ println("Hello \(person.name).")
 ##### First object
 
 ```swift
-let kyle = try? queryset.first()
+let Dan = try? queryset.first()
 ```
 
 ##### Last object
 
 ```swift
-let kyle = try? queryset.last()
+let Dan = try? queryset.last()
 ```
 
 ##### Object at index
@@ -139,11 +139,11 @@ CoreDataQuery provides KeyPath extensions providing operator functions allowing 
 to create predicates.
 
 ```swift
-// Name is equal to Kyle
-\Person.name == "Kyle"
+// Name is equal to Dan
+\Person.name == "Dan"
 
-// Name is either equal to Kyle or Katie
-\.Person.name << ["Kyle", "Katie"]
+// Name is either equal to Dan or Katie
+\.Person.name << ["Dan", "Katie"]
 
 // Age is equal to 27
 \.Person.age == 27
@@ -175,24 +175,22 @@ The following types of comparisons are supported using Attribute:
 CoreDataQuery provides the `!`, `&&` and `||` operators for joining multiple predicates together.
 
 ```swift
-// Persons name is Kyle or Katie
-\Person.name == "Kyle" || \Person.name == "Katie"
+// Persons name is Dan or Katie
+\Person.name == "Dan" || \Person.name == "Katie"
 
-// Persons age is more than 25 and their name is Kyle
-\Person.age >= 25 && \Person.name == "Kyle"
+// Persons age is more than 25 and their name is Dan
+\Person.age >= 25 && \Person.name == "Dan"
 
-// Persons name is not Kyle
-!(\Person.name == "Kyle")
+// Persons name is not Dan
+!(\Person.name == "Dan")
 ```
 
 ## Installation
 
-[CocoaPods](http://cocoapods.org) is the recommended way to add CoreDataQuery to
-your project, you may also use Carthage.
+[Swift Package Manager](https://swift.org/package-manager/) is the recommended way to add CoreDataQuery to
+your project. In XCode, select File -> Swift Packages -> Add Package Dependency...  
+enter the url for this repository and select the latest version or the master branch
 
-```ruby
-pod 'CoreDataQuery'
-```
 
 ## License
 
